@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️ Our Love ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.container{
+    width:90%;
+    max-width:420px;
+    background:rgba(255,255,255,.18);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    z-index:2;
+}
+
+.photo{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid white;
+    margin-bottom:15px;
+}
+
+h1{
+    margin-bottom:10px;
+}
+
+#countdown{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:20px 0;
+}
+
+.box{
+    background:white;
+    color:#ff4d6d;
+    width:80px;
+    padding:15px;
+    border-radius:15px;
+}
+
+.number{
+    font-size:28px;
+    font-weight:bold;
+}
+
+button{
+    margin-top:15px;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:#ff2d55;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ff1744;
+}
+
+.letter{
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:white;
+    color:#444;
+    width:340px;
+    max-width:90%;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    z-index:999;
+    text-align:center;
+}
+
+.close{
+    margin-top:20px;
+}
+
+.heart{
+    position:fixed;
+    top:-20px;
+    color:red;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="love.jpg" class="photo">
+
+<h1>❤️ Our Love ❤️</h1>
+
+<p>ចាប់ផ្តើមស្រឡាញ់គ្នា៖ 16/06/2026</p>
+
+<div id="countdown">
+
+<div class="box">
+<div class="number" id="days">0</div>
+ថ្ងៃ
+</div>
+
+<div class="box">
+<div class="number" id="hours">0</div>
+ម៉ោង
+</div>
+
+<div class="box">
+<div class="number" id="minutes">0</div>
+នាទី
+</div>
+
+<div class="box">
+<div class="number" id="seconds">0</div>
+វិនាទី
+</div>
+
+</div>
+
+<p>💖 ពួកយើងស្រឡាញ់គ្នាបាន 💖</p>
+
+<button onclick="openLetter()">💌 បើកសំបុត្រ</button>
+
+</div>
+
+<div class="letter" id="letter">
+
+<h2>💖 ជូនចំពោះអូន 💖</h2>
+
+<p>
+អរគុណដែលបានចូលមកក្នុងជីវិតបង។ ❤️<br><br>
+Thank you for being the best part of my life. Come rain or shine, my love for you will never fade, and I promise to take care of you forever. 🥰 🥰<br><br>
+
+Happy Every Day My Love ❤️
+</p>
+
+<button class="close" onclick="closeLetter()">បិទ</button>
+
+</div>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+const startDate=new Date("2026-06-16T00:00:00").getTime();
+
+setInterval(()=>{
+
+const now=new Date().getTime();
+
+const diff=now-startDate;
+
+const days=Math.floor(diff/(1000*60*60*24));
+const hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+const minutes=Math.floor((diff%(1000*60*60))/(1000*60));
+const seconds=Math.floor((diff%(1000*60))/1000);
+
+document.getElementById("days").innerHTML=days;
+document.getElementById("hours").innerHTML=hours;
+document.getElementById("minutes").innerHTML=minutes;
+document.getElementById("seconds").innerHTML=seconds;
+
+},1000);
+
+function openLetter(){
+
+document.getElementById("letter").style.display="block";
+document.getElementById("music").play();
+
+}
+
+function closeLetter(){
+
+document.getElementById("letter").style.display="none";
+
+}
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(20+Math.random()*20)+"px";
+
+heart.style.animationDuration=(4+Math.random()*4)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),8000);
+
+}
+
+setInterval(createHeart,250);
+
+</script>
+
+</body>
+</html>
